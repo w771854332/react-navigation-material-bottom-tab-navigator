@@ -19,8 +19,10 @@ class BottomNavigationView extends React.Component<Props> {
 
   render() {
     // eslint-disable-next-line no-unused-vars
-    const { activeTintColor, navigation, descriptors, ...rest } = this.props;
-
+    const { activeTintColor, navigation, descriptors, tabBarOptions = {}, ...rest } = this.props;
+    if (!tabBarOptions.showLabel) {
+      rest.renderLabel = () => null
+    }
     return (
       <PaperProvider>
         <BottomNavigation
